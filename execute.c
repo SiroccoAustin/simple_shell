@@ -4,13 +4,14 @@
  * execute - execute command
  * @av: arguments to execute
  * @env: environmental argument
- * Retunr: 0 if unsuccessful
+ * Return: 0 if unsuccessful
  */
 
 int execute(char **av, char *env[])
 {
 	int status, i;
 	pid_t pid;
+
 	if (!av && !env)
 		perror("./shell: No such file or directory");
 

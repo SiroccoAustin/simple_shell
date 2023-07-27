@@ -21,4 +21,4 @@ int _strncmp(char *s, char *s2, size_t n);
 char *create_comand(char *token, char *command);
 char *_strcpy(char *dest, char *src);
 
-#endif /*MAIN_H*/                    
+#endif /*MAIN_H*/

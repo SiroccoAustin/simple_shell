@@ -12,6 +12,7 @@ char *get_path(char *command, char *env[])
 	int i = 0;
 	char *path = NULL, *file, *token, *test = "PATH=";
 	struct stat buf;
+
 	while (env[i] != NULL)
 	{
 		if (_strncmp(env[i], test, 5) == 0)
@@ -28,7 +29,6 @@ char *get_path(char *command, char *env[])
 		while (token != NULL)
 		{
 			file = create_comand(token, command);
-			
 			if (stat(file, &buf) == 0)
 			{
 				return (file);

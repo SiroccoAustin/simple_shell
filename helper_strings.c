@@ -9,7 +9,7 @@
 
 char *_strcat(char *dest, char *src)
 {
-	int len = 0,j = 0;
+	int len = 0, j = 0;
 
 	while (dest[len])
 		len++;
@@ -60,11 +60,18 @@ char *_strcpy(char *dest, char *src)
 	return (dest);
 }
 
+/**
+ * _strncmp - compare strings
+ * @s1: first string
+ * @s2: second string
+ * @n: number
+ * Return: 0 if successful and -1 if not
+*/
 
 int _strncmp(char *s1, char *s2, size_t n)
 {
 
-	while(n > 0 && (*s1 != '\0' || *s2 != '\0'))
+	while (n > 0 && (*s1 != '\0' || *s2 != '\0'))
 	{
 		if (*s1 != *s2)
 		{
