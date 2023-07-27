@@ -25,7 +25,6 @@ int execute(char **av, char *env[])
 		i = execve(path_command, av, env);
 		if (i == -1)
 			perror("./shell: No such file or directory");
-		exit(EXIT_FAILURE);
 	}
 	if (pid < 0)
 	{
