@@ -18,13 +18,11 @@ char **get_string(char *s)
 
 	while (ret != NULL)
 	{
-		av = realloc(av, (i + 1) * sizeof(char *));
 		av[i] = malloc(sizeof(char) * (_strlen(ret) + 1));
 		_strcpy(av[i], ret);
 		i++;
 		ret = strtok(NULL, delim);
 	}
-	av = realloc(av, (i + 1) * sizeof(char *));
 	av[i] = NULL;
 	return (av);
 }
