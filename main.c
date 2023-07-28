@@ -10,13 +10,18 @@
 
 int main(int ac, char *av[], char **env)
 {
+	int mode;
 	char *lineptr = NULL;
 	char **str;
 	(void)ac;
 	(void)av;
 	while (!feof(stdin))
 	{
+		mode = isatty(STDIN_FILENO);
+		if (mode == 1)
+		{
 		_printf("$: ");
+		}
 		lineptr = command();
 		str = get_string(lineptr);
 		execute(str, env);

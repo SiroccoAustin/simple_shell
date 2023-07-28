@@ -7,16 +7,15 @@
 
 char *command()
 {
-	char *lineptr = NULL;
+	char *lineptr;
 	size_t size = 0;
 	ssize_t eof;
-
+	/*_printf("$: ");*/
 	eof = getline(&lineptr, &size, stdin);
 
 	if (eof == -1)
 	{
-		_printf("\n");
-		exit(0);
+		return (NULL);
 	}
 
 	return (lineptr);

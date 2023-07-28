@@ -9,7 +9,7 @@
 
 int execute(char **av, char *env[])
 {
-	int status, i;
+	int i, status;
 	pid_t pid;
 
 	if (!av && !env)
@@ -25,6 +25,7 @@ int execute(char **av, char *env[])
 		i = execve(path_command, av, env);
 		if (i == -1)
 			perror("./shell: No such file or directory");
+		exit(EXIT_FAILURE);
 	}
 	if (pid < 0)
 	{

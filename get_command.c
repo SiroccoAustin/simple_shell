@@ -11,9 +11,9 @@ char **get_string(char *s)
 	int i = 0;
 	char **av;
 	char *ret;
-	char *delim = " \n";
+	char *delim = " \t\n\r\a";
 
-	av = malloc(2 * sizeof(char *));
+	av = malloc(sizeof(char *));
 	ret = strtok(s, delim);
 
 	while (ret != NULL)
@@ -23,6 +23,6 @@ char **get_string(char *s)
 		i++;
 		ret = strtok(NULL, delim);
 	}
-	av[i] = NULL;
+	av[i] = '\0';
 	return (av);
 }
