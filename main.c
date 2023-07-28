@@ -10,7 +10,7 @@
 
 int main(int ac, char *av[], char **env)
 {
-	int mode;
+	int mode, i = 0;
 	char *lineptr = NULL;
 	char **str;
 	(void)ac;
