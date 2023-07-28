@@ -20,6 +20,7 @@ char *_strcat(char *dest, char *src)
 		j++;
 		len++;
 	}
+	dest[len] = '\0';
 	return (dest);
 }
 
@@ -34,7 +35,7 @@ int _strlen(char *s)
 	int len = 0;
 
 	if (!s)
-		return (0);
+		return (-1);
 
 	while (s[len])
 		len++;
@@ -57,6 +58,7 @@ char *_strcpy(char *dest, char *src)
 		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -75,7 +77,7 @@ int _strncmp(char *s1, char *s2, size_t n)
 	{
 		if (*s1 != *s2)
 		{
-			return (-1);
+			return (*s1 - *s2);
 		}
 		s1++;
 		s2++;
