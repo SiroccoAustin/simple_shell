@@ -15,7 +15,7 @@ char *command()
 
 	if (eof == -1)
 	{
-		return (NULL);
+		exit(0);
 	}
 
 	return (lineptr);

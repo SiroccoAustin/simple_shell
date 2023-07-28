@@ -17,7 +17,6 @@ char *create_comand(char *token, char *command)
 	file = malloc(len1 + len2 + 2);
 	if (file == NULL)
 	{
-		free(file);
 		return (NULL);
 	}
 	_strcpy(file, token);

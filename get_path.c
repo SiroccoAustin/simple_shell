@@ -35,6 +35,7 @@ char *get_path(char *command, char *env[])
 			}
 			else
 			{
+				free(file);
 				token = strtok(NULL, ":");
 			}
 		}

@@ -30,10 +30,12 @@ int execute(char **av, char *env[])
 	if (pid < 0)
 	{
 		perror("./shell");
+		return (-1);
 	}
 	else
 	{
-		wait(&status);
+		if (wait(&status) == -1)
+			return (-1);
 	}
 	return (0);
 }

@@ -15,7 +15,7 @@ int main(int ac, char *av[], char **env)
 	char **str;
 	(void)ac;
 	(void)av;
-	while (!feof(stdin))
+	while (1)
 	{
 		mode = isatty(STDIN_FILENO);
 		if (mode == 1)
@@ -23,9 +23,17 @@ int main(int ac, char *av[], char **env)
 		_printf("$: ");
 		}
 		lineptr = command();
+		if (lineptr == NULL)
+			break;
+
 		str = get_string(lineptr);
 		execute(str, env);
 
+		while (str[i] != NULL) 
+		{
+			free(str[i]);
+			i++;
+    		}
 		free(lineptr);
 		free(str);
 	}
