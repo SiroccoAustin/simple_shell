@@ -8,7 +8,7 @@
 
 int _printf(char *str)
 {
-	int i = 0, value, count;
+	int i = 0, value, count = 0;
 
 	while (str[i])
 	{

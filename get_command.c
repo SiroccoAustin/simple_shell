@@ -8,12 +8,22 @@
 
 char **get_string(char *s)
 {
-	int i = 0;
+	int i = 0, len = 0;
 	char **av;
 	char *ret;
 	char *delim = " \t\n\r\a";
+	char *copy, *token;
 
-	av = malloc(sizeof(char *));
+	copy = s;
+	ret = strtok(copy, delim);
+
+	while (token != NULL)
+	{
+		len++;
+		token = strtok(NULL, delim);
+	}
+
+	av = malloc(sizeof(char *) * 1024);
 	ret = strtok(s, delim);
 
 	while (ret != NULL)
@@ -24,5 +34,11 @@ char **get_string(char *s)
 		ret = strtok(NULL, delim);
 	}
 	av[i] = NULL;
+
+	while (--i >= 0)
+	{
+		free(av[i]);
+	}
+	free(av);
 	return (av);
 }

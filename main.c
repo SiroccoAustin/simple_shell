@@ -28,6 +28,8 @@ int main(int ac, char *av[], char **env)
 
 		str = get_string(lineptr);
 		execute(str, env);
+		
+		i = 0;
 
 		while (str[i] != NULL) 
 		{
