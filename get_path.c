@@ -18,6 +18,7 @@ char *get_path(char *command, char *env[])
 		if (_strncmp(env[i], test, 5) == 0)
 		{
 			path = env[i] + 5;
+			break;
 		}
 		i++;
 	}
@@ -33,11 +34,8 @@ char *get_path(char *command, char *env[])
 			{
 				return (file);
 			}
-			else
-			{
-				free(file);
-				token = strtok(NULL, ":");
-			}
+			free(file);
+			token = strtok(NULL, ":");
 		}
 		if (stat(command, &buf) == 0)
 		{

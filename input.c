@@ -1,22 +1,16 @@
 #include "main.h"
 
-/**
- * command - gets command
- * Return: string
- */
-
 char *command()
 {
-	char *lineptr;
+	char *lineptr = NULL;
 	size_t size = 0;
 	ssize_t eof;
-	/*_printf("$: ");*/
-	eof = getline(&lineptr, &size, stdin);
 
+	eof = getline(&lineptr, &size, stdin);
 	if (eof == -1)
 	{
+		free(lineptr);
 		exit(0);
 	}
-
 	return (lineptr);
 }
