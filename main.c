@@ -10,7 +10,7 @@
 
 int main(int ac, char *av[], char *env[])
 {
-	int mode, i = 0, empty = 1, j = 0, p;
+	int mode, i = 0, empty, j = 0, p;
 	char *lineptr = NULL;
 	char **str;
 	(void)ac;
@@ -18,31 +18,31 @@ int main(int ac, char *av[], char *env[])
 	mode = isatty(STDIN_FILENO);
 	while (1)
 	{
+		empty = 1;
 		if (mode == 1)
 		{
-		_printf("$: ");
+		_printf("$ ");
 		}
 		lineptr = command();
 		p = strlen(lineptr);
 		while (j < p)
 		{
-			if (lineptr[j] != '\n')
+			if (lineptr[j] != '\n' && lineptr[j] != ' ' && lineptr[j] != '\t')
 			{
 				empty = 0;
 				break;
 			}
 			j++;
 		}
-		if (empty == 0)
+		if (empty)
 		{
-			break;
+			free(lineptr);
+			continue;
 		}
-
 		str = get_string(lineptr);
 
 		if (strcmp(str[0], "exit") == 0)
 		{
-			printf("Exitting the shell\n");
 			break;
 		}
 		execute(str, env);
@@ -56,6 +56,7 @@ int main(int ac, char *av[], char *env[])
     	}
 		free(lineptr);
 		free(str);
+		
 	}
 	return (0);
 }

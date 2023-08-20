@@ -7,7 +7,7 @@
  * Return: directory id successful return null if not
  */
 
-char *get_path(char *command, char *env[])
+char *get_path(char *command, char **env)
 {
 	int i = 0;
 	char *path = NULL, *file, *token, *test = "PATH=";
@@ -17,7 +17,7 @@ char *get_path(char *command, char *env[])
 	{
 		if (_strncmp(env[i], test, 5) == 0)
 		{
-			path = env[i] + 5;
+			path = strdup(env[i] + 5);
 			break;
 		}
 		i++;
@@ -32,11 +32,13 @@ char *get_path(char *command, char *env[])
 			file = create_comand(token, command);
 			if (stat(file, &buf) == 0)
 			{
+				free(path);
 				return (file);
 			}
 			free(file);
 			token = strtok(NULL, ":");
 		}
+		free(path);
 		if (stat(command, &buf) == 0)
 		{
 			return (command);

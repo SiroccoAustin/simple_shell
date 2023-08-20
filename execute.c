@@ -25,11 +25,15 @@ int execute(char *av[], char *env[])
 	{
 		command = av[0];
 		path_command = get_path(command, env);
-
+		if (path_command == NULL)
+		{
+			perror("./hsh: command");
+			exit(EXIT_FAILURE);
+		}
 		i = execve(path_command, av, env);
 		if (i == -1)
 		{
-			perror("./shell: No such file or directory");
+			perror("./hsh");
 			free(path_command);
 			exit(EXIT_FAILURE);
 		}
