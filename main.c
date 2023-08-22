@@ -13,8 +13,6 @@ int main(int ac, char **argv, char **env)
 {
 	int mode, empty, j, p;
 	char *lineptr = NULL, **str;
-
-	environ = env;
 	(void)ac;
 	mode = isatty(STDIN_FILENO);
 	while (1)
@@ -42,8 +40,6 @@ int main(int ac, char **argv, char **env)
 		}
 		str = get_string(lineptr);
 		my_exit(str[0]);
-		my_env(str[0], env);
-		my_cd(str);
 		execute(str, argv, env);
 		free_memory(str);
 		free(lineptr);
