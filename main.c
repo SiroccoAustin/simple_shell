@@ -42,7 +42,6 @@ int main(int ac, char **argv, char **env)
 		}
 		str = get_string(lineptr);
 		my_exit(str[0]);
-		my_cd(str);
 		my_env(str[0], env);
 		execute(str, argv, env);
 		free_memory(str);
