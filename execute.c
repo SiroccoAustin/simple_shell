@@ -28,7 +28,7 @@ int execute(char **av, char **argv, char **env)
 		path_command = get_path(command, env);
 		if (access(path_command, F_OK) == -1)
 		{
-			print_error(command, argv[0]);
+			/*print_error(command, argv[0]);*/
 			free(path_command);
 			return (-1);
 		}

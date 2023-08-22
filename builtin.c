@@ -14,3 +14,21 @@ void my_exit(char *str)
 		exit(0);
 	}
 }
+
+/**
+ * my_cd - change directory
+ * @str: name of directory
+ * Return: 1 on success
+ */
+
+int my_cd(char **str)
+{
+	if (_strcmp(str[0], "cd") == 0)
+	{
+		if (str[1] == NULL)
+			chdir(getenv("HOME"));
+		else
+			chdir(str[1]);
+	}
+	return (1);
+}
