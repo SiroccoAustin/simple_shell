@@ -11,7 +11,6 @@
 #include <fcntl.h>
 #include <errno.h>
 
-extern char **environ;
 
 char **get_string(char *s);
 char *command();
@@ -20,8 +19,8 @@ int execute(char **av, char **argv, char **env);
 int _printf(char *str);
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
-int _strncmp(char *s1, char *s2, size_t n);
-int _strcmp(char *s1, char *s2);
+int _strncmp(const char *s1, const char *s2, int n);
+int _strcmp(const char *s1, const char *s2);
 char *_strdup(char *str);
 void free_memory(char **str);
 void my_exit(char *str);

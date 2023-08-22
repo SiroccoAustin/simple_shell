@@ -64,23 +64,23 @@ char *_strcpy(char *dest, char *src)
 
 /**
  * _strncmp - compare strings
- * @s1: first string
- * @s2: second string
+ * @str1: first string
+ * @str2: second string
  * @n: number
  * Return: 0 if successful and -1 if not
 */
 
-int _strncmp(char *s1, char *s2, size_t n)
+int _strncmp(const char *str1, const char *str2, int n)
 {
+	int i = 0;
 
-	while (n > 0 && (*s1 != '\0' || *s2 != '\0'))
+	while (n > 0 && (str1[i] != '\0' || str2[i] != '\0'))
 	{
-		if (*s1 != *s2)
+		if (str1[i] != str2[i])
 		{
-			return (*s1 - *s2);
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 		}
-		s1++;
-		s2++;
+		i++;
 		n--;
 	}
 	return (0);
@@ -93,16 +93,15 @@ int _strncmp(char *s1, char *s2, size_t n)
  * Return: 0 on success
  */
 
-int _strcmp(char *s1, char *s2)
+int _strcmp(const char *s1, const char *s2)
 {
-	while (*s1 != '\0' || *s2 != '\0')
+	while (s1[i] != '\0' || s2[i] != '\0')
 	{
-		if (*s1 != *s2)
+		if (s1[i] != s2[i])
 		{
-			return (*s1 - *s2);
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		}
-		s1++;
-		s2++;
+		i++;
 	}
 	return (0);
 }
