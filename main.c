@@ -8,17 +8,15 @@
  * Return: always return 0
  */
 
-int main(int ac, char *av[], char *env[])
+int main(int ac, char **argv, char **env)
 {
-	int mode, i = 0, empty, j = 0, p;
-	char *lineptr = NULL;
-	char **str;
+	int mode, empty, j, p;
+	char *lineptr = NULL, **str;
 	(void)ac;
-	(void)av;
 	mode = isatty(STDIN_FILENO);
 	while (1)
 	{
-		empty = 1;
+		empty = 1, j = 0;
 		if (mode == 1)
 		{
 		_printf("$ ");
@@ -40,23 +38,10 @@ int main(int ac, char *av[], char *env[])
 			continue;
 		}
 		str = get_string(lineptr);
-
-		if (strcmp(str[0], "exit") == 0)
-		{
-			break;
-		}
-		execute(str, env);
-		
-		i = 0;
-
-		while (str[i] != NULL) 
-		{
-			free(str[i]);
-			i++;
-    	}
+		my_exit(str[0]);
+		execute(str, argv, env);
+		free_memory(str);
 		free(lineptr);
-		free(str);
-		
 	}
 	return (0);
 }

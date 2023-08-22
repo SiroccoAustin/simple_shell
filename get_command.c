@@ -9,11 +9,9 @@
 char **get_string(char *s)
 {
 	int i = 0, num_tokens = 0;
-	char **av;
-	char *ret, *copy, *end;
-	char *delim = " \t\n\r\a";
-	copy = strdup(s);
-	ret = strtok(copy, delim);
+	char **av, *ret, *dupl, *end, *delim = " \t\n\r\a";
+	dupl = _strdup(s);
+	ret = strtok(dupl, delim);
 	if (!s)
 		return (NULL);
 
@@ -48,6 +46,6 @@ char **get_string(char *s)
 		ret = strtok(NULL, delim);
 	}
 	av[i] = NULL;
-	free(copy);
+	free(dupl);
 	return (av);
 }

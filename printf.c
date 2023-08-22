@@ -10,6 +10,9 @@ int _printf(char *str)
 {
 	int i = 0, value, count = 0;
 
+	if (!str)
+		return (0);
+
 	while (str[i])
 	{
 		value = write(1, &str[i], 1);

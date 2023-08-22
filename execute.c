@@ -7,7 +7,7 @@
  * Return: 0 if unsuccessful
  */
 
-int execute(char *av[], char *env[])
+int execute(char **av, char **argv, char **env)
 {
 	int i, status;
 	char *command, *path_command;
@@ -15,7 +15,7 @@ int execute(char *av[], char *env[])
 
 	if (!av || !env)
 	{
-		perror("./shell: No such file or directory");
+		perror("./hsh");
 		return (-1);
 	}
 
@@ -25,12 +25,15 @@ int execute(char *av[], char *env[])
 	{
 		command = av[0];
 		path_command = get_path(command, env);
-		if (path_command == NULL)
+		if (access(path_command, F_OK) == -1)
 		{
-			perror("./hsh: command");
-			exit(EXIT_FAILURE);
+			print_error(command, argv[0]);
+			free(path_command);
+			return (-1);
 		}
+		else{
 		i = execve(path_command, av, env);
+		}
 		if (i == -1)
 		{
 			perror("./hsh");
