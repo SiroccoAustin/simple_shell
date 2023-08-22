@@ -30,5 +30,6 @@ char *_strcpy(char *dest, char *src);
 void print_error(char *command, char *filename);
 char *_getenv(char *str);
 int my_cd(char **str);
+int my_env(char *str, char **env);
 
 #endif /*MAIN_H*/
