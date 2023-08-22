@@ -47,30 +47,3 @@ void free_memory(char **str)
 	}
 	free(str);
 }
-
-/**
- * _getenv - gets environment
- * @str: name of environ
- * Return: path to the environ
- */
-
-char *_getenv(char *str)
-{
-	int i = 0;
-
-	char *token;
-
-	if (!environ || !str)
-	{
-		return (NULL);
-	}
-
-	while (environ[i])
-	{
-		token = strtok(environ[i], "=");
-		if (_strcmp(token, str) == 0)
-			return (strtok(NULL, "="));
-		i++;
-	}
-	return (NULL);
-}
