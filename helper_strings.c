@@ -86,6 +86,13 @@ int _strncmp(char *s1, char *s2, size_t n)
 	return (0);
 }
 
+/**
+ * _strcmp - compare two string
+ * @s1: first string
+ * @s2: second string
+ * Return: 0 on success
+ */
+
 int _strcmp(char *s1, char *s2)
 {
 	while (*s1 != '\0' || *s2 != '\0')

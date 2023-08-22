@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * _strdup - duplicate string
+ * @str: string to duplicate
+ * Return: duplicated string
+ */
+
 char *_strdup(char *str)
 {
 	int len;
@@ -8,7 +14,7 @@ char *_strdup(char *str)
 
 	if (str == NULL)
 	{
-		return NULL;
+		return (NULL);
 	}
 
 	len = _strlen(str) + 1;
@@ -17,16 +23,23 @@ char *_strdup(char *str)
 	if (ptr == NULL)
 	{
 		perror("malloc");
-		return NULL;
+		return (NULL);
 	}
 
 	_strcpy(ptr, str);
 	return (ptr);
 }
 
+/**
+ * free_memory - frees memory
+ * @str: memory to set free
+ * Return: nothing
+ */
+
 void free_memory(char **str)
 {
 	int i = 0;
+
 	while (str[i] != NULL)
 	{
 		free(str[i]);

@@ -3,7 +3,7 @@
 /**
  * main - main function
  * @ac: first arg
- * @av: second arg
+ * @argv: second arg
  * @env: third arg
  * Return: always return 0
  */

@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * command - get user input
+ * Return: string the user has input
+ */
+
 char *command()
 {
 	char *lineptr = NULL;

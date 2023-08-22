@@ -10,6 +10,7 @@ char **get_string(char *s)
 {
 	int i = 0, num_tokens = 0;
 	char **av, *ret, *dupl, *end, *delim = " \t\n\r\a";
+
 	dupl = _strdup(s);
 	ret = strtok(dupl, delim);
 	if (!s)
@@ -26,14 +27,12 @@ char **get_string(char *s)
 	i = 0;
 	while (ret != NULL)
 	{
-		/*av[i] = malloc(sizeof(char) * (_strlen(ret) + 1));*/
 		if (_strlen(ret) > 0)
 		{
 		while (*ret && (*ret == ' ' || *ret == '\t'))
 		{
 			ret++;
 		}
-
 		end = ret + strlen(ret) - 1;
 		while (end > ret && (*end == ' ' || *end == '\t'))
 		{

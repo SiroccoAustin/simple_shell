@@ -3,6 +3,7 @@
 /**
  * execute - execute command
  * @av: arguments to execute
+ * @argv: command line arg
  * @env: environmental argument
  * Return: 0 if unsuccessful
  */
@@ -31,9 +32,8 @@ int execute(char **av, char **argv, char **env)
 			free(path_command);
 			return (-1);
 		}
-		else{
-		i = execve(path_command, av, env);
-		}
+		else
+			i = execve(path_command, av, env);
 		if (i == -1)
 		{
 			perror("./hsh");
@@ -47,9 +47,7 @@ int execute(char **av, char **argv, char **env)
 		return (-1);
 	}
 	else
-	{
 		if (wait(&status) == -1)
 			return (-1);
-	}
-	return WIFEXITED(status) ? WEXITSTATUS(status) : -1;
+	return (WIFEXITED(status) ? WEXITSTATUS(status) : -1);
 }
