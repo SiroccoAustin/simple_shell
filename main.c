@@ -8,12 +8,12 @@
  * Return: always return 0
  */
 
-extern char **environ;
 
 int main(int ac, char **argv, char **env)
 {
 	int mode, empty, j, p;
 	char *lineptr = NULL, **str;
+
 	environ = env;
 	(void)ac;
 	mode = isatty(STDIN_FILENO);
