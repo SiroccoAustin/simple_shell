@@ -17,7 +17,7 @@ char *get_path(char *command, char **env)
 	{
 		if (_strncmp(env[i], test, 5) == 0)
 		{
-			path = _strdup(env[i] + 5);
+			path = env[i] + 5;
 			break;
 		}
 		i++;
