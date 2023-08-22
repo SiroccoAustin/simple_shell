@@ -11,7 +11,7 @@
 int execute(char **av, char **argv, char **env)
 {
 	int i, status;
-	char *command, *path_command;
+	char *command, *path_command, *cd = "cd", *directory = "cd .";
 	pid_t pid;
 
 	if (!av || !env)
@@ -26,11 +26,11 @@ int execute(char **av, char **argv, char **env)
 	{
 		command = av[0];
 		path_command = get_path(command, env);
-		if (access(path_command, F_OK) == -1)
+		if (access(path_command, F_OK) == -1 && command != cd && command != directory)
 		{
-			/*print_error(command, argv[0]);*/
+			print_error(command, argv[0]);
 			free(path_command);
-			return (-1);
+			exit(0);
 		}
 		else
 			i = execve(path_command, av, env);
